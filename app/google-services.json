@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "432667193070",
+    "project_id": "campnews-53330",
+    "storage_bucket": "campnews-53330.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:432667193070:android:194d06b29e87ff12574dff",
+        "android_client_info": {
+          "package_name": "com.example.campnews"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "432667193070-0m60o403m0ps8db6uv6p319ffiuu1gog.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCasDspNFaSiL8HAx8FNQjxmaviHJRmr7g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "432667193070-0m60o403m0ps8db6uv6p319ffiuu1gog.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
