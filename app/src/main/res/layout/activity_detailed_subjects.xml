@@ -2,9 +2,47 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/whitesmoke"
     android:layout_height="match_parent"
     tools:context=".DetailedSubjects">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@color/blue1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:id="@+id/subjectName"
+            android:textSize="20sp"
+            android:text="Subject name"
+            android:textColor="@color/white"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/teachersName"
+            android:layout_height="wrap_content"
+            android:text="Teacher's Name"
+            android:textSize="18sp"
+            android:textColor="@color/white"/>
+
+
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -12,9 +50,56 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:src="@drawable/ic_add_big"
+        android:focusable="true"
         android:background="@color/blue1"
         android:layout_alignParentEnd="true"
+        app:icon="@drawable/ic_add_big"
+        android:text="Upload File"
+        android:elevation="5dp"
         android:layout_margin="10dp"
         android:layout_alignParentRight="true"
         android:id="@+id/uploadFiles"/>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/uploadImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/uploadFiles"
+        android:layout_alignStart="@+id/uploadFiles"
+        android:layout_alignLeft="@+id/uploadFiles"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="-2dp"
+        android:layout_marginLeft="-2dp"
+        android:visibility="invisible"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginRight="11dp"
+        android:layout_marginBottom="86dp"
+        android:background="@color/blue1"
+        android:focusable="true"
+        android:src="@drawable/ic_image" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/uploadPdf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/uploadImage"
+        android:layout_alignStart="@+id/uploadImage"
+        android:layout_alignLeft="@+id/uploadImage"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:visibility="invisible"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="162dp"
+        android:background="@color/blue1"
+        android:focusable="true"
+        android:src="@drawable/ic_pdf" />
 </RelativeLayout>

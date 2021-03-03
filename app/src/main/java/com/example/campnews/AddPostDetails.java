@@ -51,6 +51,7 @@ public class AddPostDetails extends AppCompatActivity {
     private boolean flag;
     private int STORAGE_PERMISSION_CODE = 1;
     private long postsCount;
+    private long postsCount1;
 
 
 
@@ -84,8 +85,6 @@ public class AddPostDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                     choosePost();
-
-
             }
         });
 
@@ -99,6 +98,7 @@ public class AddPostDetails extends AppCompatActivity {
                 }
                 else {
                     if (onlyText.isShown()) {
+                        onlyText.clearFocus();
                         text = onlyText.getText().toString();
                         onlyText.clearFocus();
                         upLoadText(text);
@@ -111,30 +111,23 @@ public class AddPostDetails extends AppCompatActivity {
     }
 
     private void upLoadText(String text){
-
         db.collection("Posts").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if(!value.isEmpty()){
-                    postsCount=value.getDocumentChanges().size();
+                    postsCount1 =value.getDocumentChanges().size();
                 }
             }
         });
 
-
         if(!TextUtils.isEmpty(text)){
 
-            Random rand = new Random();
+            Map<String,Object> note1 = new HashMap<>();
+            note1.put("desc",text);
+            note1.put("name","parth darekar");
+            note1.put("count", postsCount1);
 
-            int random = rand.nextInt(1000);
-            String textname = String.valueOf(random);
-
-            Map<String,Object> note = new HashMap<>();
-            note.put("desc",text);
-            note.put("name","parth darekar");
-            note.put("count",postsCount);
-
-            db.collection("Posts").document(textname).set(note).addOnSuccessListener(new OnSuccessListener<Void>() {
+            db.collection("Posts").document("parth darekar text"+(postsCount1+1)).set(note1).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void aVoid) {
 
@@ -210,9 +203,7 @@ public class AddPostDetails extends AppCompatActivity {
 
 
     }
-
     private void uploadPic() {
-
 
         db.collection("Posts").addSnapshotListener(new EventListener<QuerySnapshot>() {
                                                        @Override
@@ -225,18 +216,6 @@ public class AddPostDetails extends AppCompatActivity {
 
 
                 Toast.makeText(AddPostDetails.this, descText, Toast.LENGTH_SHORT).show();
-
-        Random rand = new Random();
-
-        int random = rand.nextInt(1000);
-        String name = String.valueOf(random);
-
-        if(TextUtils.isEmpty(descText)){
-            flag=false;
-        }
-        else {
-            flag = true;
-        }
 
          ProgressDialog pd = new ProgressDialog(AddPostDetails.this);
         pd.setTitle("Uploading Image....");
@@ -298,11 +277,6 @@ public class AddPostDetails extends AppCompatActivity {
                 pd.setMessage("Percentage: "+(int) progressPercentage+"%");
             }
         });
-
-
-
-
     }
-
 
 }
