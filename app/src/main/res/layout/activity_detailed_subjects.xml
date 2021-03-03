@@ -10,6 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
+        android:id="@+id/ll1"
         android:background="@color/blue1">
 
         <LinearLayout
@@ -38,11 +39,42 @@
 
         </LinearLayout>
 
-
-
-
     </LinearLayout>
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/ll1"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="15dp"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nothing Important Yet"
+        android:textColor="@color/black"
+        android:id="@+id/noticeTv"
+        android:textSize="16sp"
+        android:gravity="center_horizontal"/>
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_marginLeft="5dp"
+            android:layout_gravity="end"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_edit"
+            android:id="@+id/noticeEdit"
+            android:layout_marginStart="5dp" />
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

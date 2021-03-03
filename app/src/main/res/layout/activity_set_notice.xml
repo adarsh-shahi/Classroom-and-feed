@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/whitesmoke"
+    tools:context=".SetNotice">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_margin="20dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:maxLines="10"
+        android:padding="5dp"
+        android:id="@+id/editNotice"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:background="@color/white"
+        android:layout_height="wrap_content"/>
+
+        <com.spark.submitbutton.SubmitButton
+            android:layout_width="match_parent"
+            android:id="@+id/update_notice_Btn"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp"
+            android:padding="15dp"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:text="UPDATE"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            app:sub_btn_background="@color/blue1"
+            app:sub_btn_duration="1500"
+            android:layout_gravity="center_horizontal"
+            app:sub_btn_line_color="@color/blue1"
+            app:sub_btn_ripple_color="@color/trueBlue"
+            app:sub_btn_tick_color="@color/white" />
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -154,7 +154,7 @@ public class SelectFile extends AppCompatActivity {
     private void selectPDF() {
 
         Intent intent =new Intent();
-        intent.setType("image/*");
+        intent.setType("pdf/");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent,1);
 
