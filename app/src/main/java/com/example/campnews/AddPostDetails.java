@@ -33,6 +33,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.spark.submitbutton.SubmitButton;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -52,6 +54,7 @@ public class AddPostDetails extends AppCompatActivity {
     private int STORAGE_PERMISSION_CODE = 1;
     private long postsCount;
     private long postsCount1;
+    Date currentTime;
 
 
 
@@ -68,6 +71,7 @@ public class AddPostDetails extends AppCompatActivity {
         desc=findViewById(R.id.postDesc);
         onlyText=findViewById(R.id.onlyText);
         post=findViewById(R.id.post);
+        currentTime = Calendar.getInstance().getTime();
 
         Intent intent = getIntent();
         String type = intent.getStringExtra("type");
@@ -205,6 +209,9 @@ public class AddPostDetails extends AppCompatActivity {
     }
     private void uploadPic() {
 
+        String time = currentTime.toString();
+        String cutTime = time.substring(0,20);
+
         db.collection("Posts").addSnapshotListener(new EventListener<QuerySnapshot>() {
                                                        @Override
                                                        public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -236,9 +243,10 @@ public class AddPostDetails extends AppCompatActivity {
                                 String imageUrl = uri.toString();
                                 Map<String,Object> note = new HashMap<>();
                                 note.put("imageUrl",imageUrl);
-                                note.put("name","parth darekar");
+                                note.put("name","parth darekar"+postsCount);
                                 note.put("desc",descText );
                                 note.put("count",postsCount);
+                                note.put("time",cutTime);
                                 db.collection("Posts").document("parth darekar"+postsCount).set(note).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {

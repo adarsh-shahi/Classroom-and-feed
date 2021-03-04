@@ -28,7 +28,9 @@ public class SetNotice extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(!TextUtils.isEmpty(notice.getText().toString())){
-                    
+
+
+
                 }
                 else {
 

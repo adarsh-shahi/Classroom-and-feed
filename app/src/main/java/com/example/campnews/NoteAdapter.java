@@ -39,6 +39,7 @@ public class NoteAdapter extends FirestoreRecyclerAdapter<Note,NoteAdapter.NoteH
 
         noteHolder.description.setText(note.getDesc());
         noteHolder.adminName.setText(note.getName());
+        noteHolder.time.setText(note.getTime());
 
         if(TextUtils.isEmpty(note.getImageUrl())){
             noteHolder.adminView.setVisibility(View.VISIBLE);
@@ -59,7 +60,7 @@ public class NoteAdapter extends FirestoreRecyclerAdapter<Note,NoteAdapter.NoteH
     }
 
     class NoteHolder extends RecyclerView.ViewHolder{
-        TextView description;
+        TextView description,time;
         ImageView post;
         TextView adminName;
         View adminView,postView;
@@ -73,6 +74,7 @@ public class NoteAdapter extends FirestoreRecyclerAdapter<Note,NoteAdapter.NoteH
             adminName=itemView.findViewById(R.id.adminName);
             adminView=itemView.findViewById(R.id.adminDivider);
             postView=itemView.findViewById(R.id.postDivider);
+            time=itemView.findViewById(R.id.time);
 
         }
     }

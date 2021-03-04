@@ -25,6 +25,9 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.annotation.Nullable;
 
 import static android.app.Activity.RESULT_OK;
@@ -37,6 +40,7 @@ public class HomeFragment extends Fragment {
     private NoteAdapter adapter;
     private FloatingActionButton addPost;
     private int STORAGE_PERMISSION_CODE = 1;
+    Date currentTime;
 
 
    @Nullable
@@ -57,6 +61,7 @@ public class HomeFragment extends Fragment {
        recyclerView.setAdapter(adapter);
 
        addPost=view.findViewById(R.id.addPost);
+       currentTime = Calendar.getInstance().getTime();
 
        addPost.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -71,31 +76,31 @@ public class HomeFragment extends Fragment {
        return view;
     }
 
-    private void requestStoragePersmission() {
-        if(ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)){
-            new AlertDialog.Builder(getActivity())
-                    .setTitle("Permission needed")
-                    .setMessage("This permission is required to access file")
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            ActivityCompat.requestPermissions(getActivity(),new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},STORAGE_PERMISSION_CODE);
-                        }
-                    })
-                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    }).create().show();
-
-        }
-        else {
-            ActivityCompat.requestPermissions(getActivity(),new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},STORAGE_PERMISSION_CODE);
-        }
-
-
-    }
+//    private void requestStoragePersmission() {
+//        if(ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)){
+//            new AlertDialog.Builder(getActivity())
+//                    .setTitle("Permission needed")
+//                    .setMessage("This permission is required to access file")
+//                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            ActivityCompat.requestPermissions(getActivity(),new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},STORAGE_PERMISSION_CODE);
+//                        }
+//                    })
+//                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            dialog.dismiss();
+//                        }
+//                    }).create().show();
+//
+//        }
+//        else {
+//            ActivityCompat.requestPermissions(getActivity(),new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},STORAGE_PERMISSION_CODE);
+//        }
+//
+//
+//    }
 
 
     private void showAddPOstType() {

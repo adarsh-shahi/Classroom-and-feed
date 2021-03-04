@@ -15,15 +15,43 @@
         android:layout_margin="5dp"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="admin_name"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:id="@+id/adminName"
             android:layout_marginLeft="10dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:gravity="end"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="time"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:id="@+id/time"/>
+
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
