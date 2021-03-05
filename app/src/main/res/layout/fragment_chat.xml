@@ -29,9 +29,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/subjectName"
                 android:layout_marginLeft="10dp"
                 android:textSize="25dp"
-                android:text="Subject Name"
+                android:text="Advance Java Programming"
                 android:textColor="@color/black"/>
 
             <TextView
@@ -39,8 +40,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="5dp"
+                android:id="@+id/teachersName"
                 android:layout_marginTop="5dp"
-                android:text="Teacher's Name"
+                android:text="Santoshi Shete"
                 android:textColor="@color/black"/>
 
         </LinearLayout>

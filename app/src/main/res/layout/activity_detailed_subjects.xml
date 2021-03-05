@@ -45,6 +45,7 @@
         android:layout_width="match_parent"
         android:layout_below="@+id/ll1"
         android:layout_margin="10dp"
+        android:id="@+id/noticeCard"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="15dp"
         android:layout_height="wrap_content">
@@ -75,6 +76,12 @@
 
     </LinearLayout>
     </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_below="@id/noticeCard"
+        android:id="@+id/recycler_view_files"
+        android:layout_height="match_parent"/>
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

@@ -25,8 +25,6 @@ import java.util.Map;
 
 public class NoteAdapter extends FirestoreRecyclerAdapter<Note,NoteAdapter.NoteHolder> {
 
-    private FirebaseFirestore db=FirebaseFirestore.getInstance();
-
 
 
 
