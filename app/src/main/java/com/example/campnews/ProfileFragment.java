@@ -59,9 +59,8 @@ import static android.app.Activity.RESULT_OK;
 public class ProfileFragment extends Fragment {
 
     private ImageView profile;
-    private TextView username,bio,fullname,dob,mail,id,enroll,roll;
+    private TextView username,fullname,dob,mail,id,enroll,roll;
     private FirebaseAuth mAuth;
-    private FirebaseUser currentUserId;
     String Uid;
     String name;
     private FirebaseFirestore db ;
@@ -107,7 +106,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private void showEditProfileDialog() {
-        String options[]={"Edit Profile Photo","More"};
+        String options[]={"Edit Profile Photo","About"};
         AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
         builder.setTitle("Choose Action");
         builder.setItems(options, new DialogInterface.OnClickListener() {
@@ -116,12 +115,9 @@ public class ProfileFragment extends Fragment {
                 if(which==0){
                    loading.setMessage("Updating Profile Photo");
                         chooseProfilePic();
-
-
-
                 }
                 else if(which==1){
-
+                    startActivity(new Intent(getActivity(),AboutPage.class));
                 }
             }
         });
@@ -138,31 +134,30 @@ public class ProfileFragment extends Fragment {
         }
     }
 
-    private void requestStoragePersmission() {
-        if(ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)){
-            new AlertDialog.Builder(getActivity())
-                    .setTitle("Permission needed")
-                    .setMessage("This permission is required to access file")
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            ActivityCompat.requestPermissions(getActivity(),new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},STORAGE_PERMISSION_CODE);
-                        }
-                    })
-                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    }).create().show();
-
-        }
-        else {
-            ActivityCompat.requestPermissions(getActivity(),new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},STORAGE_PERMISSION_CODE);
-        }
-
-
-    }
+//    private void requestStoragePersmission() {
+//        if(ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)){
+//            new AlertDialog.Builder(getActivity())
+//                    .setTitle("Permission needed")
+//                    .setMessage("This permission is required to access file")
+//                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            ActivityCompat.requestPermissions(getActivity(),new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},STORAGE_PERMISSION_CODE);
+//                        }
+//                    })
+//                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            dialog.dismiss();
+//                        }
+//                    }).create().show();
+//        }
+//        else {
+//            ActivityCompat.requestPermissions(getActivity(),new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},STORAGE_PERMISSION_CODE);
+//        }
+//
+//
+//    }
 
     private void chooseProfilePic() {
         Intent intent = new Intent();
@@ -287,9 +282,6 @@ public class ProfileFragment extends Fragment {
 
                     }
                 });
-
-
             }
-
 }
 

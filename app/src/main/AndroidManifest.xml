@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CampNews">
-        <activity android:name=".SetNotice"></activity>
+        <activity android:name=".AboutPage"></activity>
+        <activity android:name=".SetNotice" />
         <activity android:name=".DetailedSubjects" />
         <activity android:name=".SelectFile" />
         <activity android:name=".AddPostDetails" />
