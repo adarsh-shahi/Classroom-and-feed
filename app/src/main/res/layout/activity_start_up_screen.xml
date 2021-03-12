@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/loading"
     tools:context=".StartUpScreen">
 
     <LinearLayout
@@ -13,10 +13,20 @@
         android:orientation="vertical"
         android:gravity="center">
 
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/hp"/>
+<!--    <ImageView-->
+<!--        android:layout_width="150dp"-->
+<!--        android:layout_height="150dp"-->
+<!--        android:src="@drawable/hp"/>-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:fontFamily="@font/baloo_bhai"-->
+<!--            android:gravity="center"-->
+<!--            android:text="CampNews"-->
+<!--            android:textColor="@color/blue1"-->
+<!--            android:textSize="30dp" />-->
+
 
     </LinearLayout>
 

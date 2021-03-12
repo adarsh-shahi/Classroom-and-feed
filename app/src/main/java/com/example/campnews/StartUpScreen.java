@@ -19,7 +19,7 @@ public class StartUpScreen extends AppCompatActivity {
                 startActivity(homeIntent);
                 finish();
             }
-        },500);
+        },1000);
 
 
     }

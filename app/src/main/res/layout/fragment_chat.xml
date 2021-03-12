@@ -30,8 +30,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/subjectName"
+                android:maxLines="1"
                 android:layout_marginLeft="10dp"
-                android:textSize="25dp"
+                android:textSize="23sp"
                 android:text="Advance Java Programming"
                 android:textColor="@color/black"/>
 
