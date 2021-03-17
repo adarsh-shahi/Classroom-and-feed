@@ -37,18 +37,6 @@
             android:src="@drawable/ic_default_profile1_blue"/>
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="your_name"
-            android:id="@+id/username"
-            android:textColor="@color/black"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:textSize="16sp"/>
-
-
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

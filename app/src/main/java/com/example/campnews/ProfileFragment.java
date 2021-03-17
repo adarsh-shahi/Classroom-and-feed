@@ -59,7 +59,7 @@ import static android.app.Activity.RESULT_OK;
 public class ProfileFragment extends Fragment {
 
     private ImageView profile;
-    private TextView username,fullname,dob,mail,id,enroll,roll;
+    private TextView fullname,dob,mail,id,enroll,roll;
     private FirebaseAuth mAuth;
     String Uid;
     String name;
@@ -81,7 +81,6 @@ public class ProfileFragment extends Fragment {
         db = FirebaseFirestore.getInstance();
         Uid=mAuth.getCurrentUser().getUid();
         profile=view.findViewById(R.id.profile_image);
-        username=view.findViewById(R.id.username);
         fullname=view.findViewById(R.id.fullName);
         dob=view.findViewById(R.id.dob);
         mail=view.findViewById(R.id.mail);
@@ -212,7 +211,6 @@ public class ProfileFragment extends Fragment {
 
                                    }
                                });
-
                            }
                        }).addOnFailureListener(new OnFailureListener() {
                            @Override
@@ -233,7 +231,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
                 double progressPercentage = (100.00* taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                pd.setMessage("Percentage: "+(int) progressPercentage+"%");
+                pd.setMessage(+(int) progressPercentage+"%");
             }
         });
 
@@ -245,30 +243,9 @@ public class ProfileFragment extends Fragment {
     @Override
             public void onStart() {
                 super.onStart();
+                String getMail = mAuth.getCurrentUser().getEmail();
 
-                switch (Uid) {
-                    case "A7wbSZ1B9gUN3ME25RiwaNwCcow2":
-                        name = "Nikhil Oswal";
-                        fullname.setText(name);
-                        break;
-
-                    case "wjg3xJHdv8e2qiIncwyCE6nDruf2":
-                        name = "Aditya Bagal";
-                        fullname.setText(name);
-                        break;
-
-                    case "h92LxblesyWhbbmaCerJUsg8FRk1":
-                        name = "Parth Darekar";
-                        fullname.setText(name);
-                        break;
-
-                    case "HOretOvE3fgPBs65wWzW3m0m4mC2":
-                        name = "Sushil Hiwale";
-                        fullname.setText(name);
-                        break;
-                }
-
-                DocumentReference documentReference = db.collection("Users").document(name);
+                DocumentReference documentReference = db.collection("Users").document(getMail);
                 documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
                     @Override
                     public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -277,7 +254,7 @@ public class ProfileFragment extends Fragment {
                         id.setText(value.getString("collegecode"));
                         enroll.setText(value.getString("enroll"));
                         roll.setText(value.getString("roll"));
-                        username.setText(value.getString("username"));
+                        fullname.setText(value.getString("name"));
                         Picasso.get().load(value.getString("profilepic")).into(profile);
 
                     }

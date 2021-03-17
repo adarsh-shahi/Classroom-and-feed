@@ -68,8 +68,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:textSize="25dp"
-                    android:text="Subject Name"
+                    android:textSize="23sp"
+                    android:text="Client Side Scripting Language"
                     android:textColor="@color/black"/>
 
                 <TextView
@@ -78,7 +78,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginBottom="5dp"
                     android:layout_marginTop="5dp"
-                    android:text="Teacher's Name"
+                    android:text="Varsha Upre"
                     android:textColor="@color/black"/>
 
             </LinearLayout>
@@ -102,8 +102,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:textSize="25dp"
-                    android:text="Subject Name"
+                    android:textSize="23sp"
+                    android:text="Operating System"
                     android:textColor="@color/black"/>
 
                 <TextView
@@ -112,7 +112,7 @@
                     android:layout_marginBottom="5dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
-                    android:text="Teacher's Name"
+                    android:text="Anjali Khandagale"
                     android:textColor="@color/black"/>
 
             </LinearLayout>
@@ -136,8 +136,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:textSize="25dp"
-                    android:text="Subject Name"
+                    android:textSize="23sp"
+                    android:text="Entrepreneurship Development"
                     android:textColor="@color/black"/>
 
                 <TextView
@@ -146,7 +146,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
-                    android:text="Teacher's Name"
+                    android:text="Vishal Shetkar"
                     android:textColor="@color/black"/>
 
             </LinearLayout>
@@ -170,8 +170,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:textSize="25dp"
-                    android:text="Subject Name"
+                    android:textSize="23sp"
+                    android:text="Environmental Studies"
                     android:textColor="@color/black"/>
 
                 <TextView
@@ -180,15 +180,12 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
-                    android:text="Teacher's Name"
+                    android:text="Deepa Yerolkar"
                     android:textColor="@color/black"/>
 
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
-
-
-
 
     </LinearLayout>
 
