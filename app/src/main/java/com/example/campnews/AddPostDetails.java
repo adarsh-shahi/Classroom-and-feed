@@ -75,7 +75,6 @@ public class AddPostDetails extends AppCompatActivity {
 
         Intent intent = getIntent();
         String type = intent.getStringExtra("type");
-        Toast.makeText(this, "1234 "+type, Toast.LENGTH_SHORT).show();
 
         if(type.equals("0")){
             onlyText.setVisibility(View.GONE);

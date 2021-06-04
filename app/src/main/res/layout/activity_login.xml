@@ -17,10 +17,10 @@
 
         <ImageView
             android:id="@+id/hpLogo"
-            android:layout_width="290dp"
+            android:layout_width="400dp"
             android:layout_height="270dp"
             android:layout_gravity="center"
-            android:src="@drawable/login_logo2" />
+            android:src="@drawable/collegelogo" />
 
 <!--        <TextView-->
 <!--            android:layout_width="match_parent"-->
@@ -50,14 +50,14 @@
             android:id="@+id/enterId"
             android:inputType="text"
             android:maxLines="1"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:textColor="@color/black"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="15dp"
             android:background="@drawable/edit_text_border"
             android:textColorHint="@color/grey"
             android:layout_marginRight="10dp"
             android:padding="10dp"
-            android:textSize="20sp"/>
+            android:textSize="15sp"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -65,22 +65,22 @@
             android:hint="Password"
             android:background="@drawable/edit_text_border"
             android:textColor="@color/black"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
             android:maxLines="1"
             android:padding="10dp"
             android:id="@+id/enterPassword"
             android:inputType="textPassword"
             android:imeOptions="actionGo"
             android:textColorHint="@color/grey"
-            android:textSize="20sp"/>
+            android:textSize="15sp"/>
 
         <com.spark.submitbutton.SubmitButton
             android:layout_width="match_parent"
             android:id="@+id/login_button"
             android:layout_height="50dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:padding="5dp"
             android:textSize="12sp"
             android:textStyle="bold"
@@ -98,15 +98,11 @@
         </androidx.cardview.widget.CardView>
 
 
-
-
-
-
-
-
-
+        <ImageView
+            android:id="@+id/campnews"
+            android:layout_width="350dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:src="@drawable/poweredby" />
     </LinearLayout>
-
-
-
 </RelativeLayout>

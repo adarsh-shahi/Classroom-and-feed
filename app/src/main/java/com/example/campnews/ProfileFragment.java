@@ -54,11 +54,13 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.Executor;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 import static android.app.Activity.RESULT_OK;
 
 public class ProfileFragment extends Fragment {
 
-    private ImageView profile;
+    private CircleImageView profile;
     private TextView fullname,dob,mail,id,enroll,roll;
     private FirebaseAuth mAuth;
     String Uid;
@@ -91,6 +93,8 @@ public class ProfileFragment extends Fragment {
         storage=FirebaseStorage.getInstance();
         storageReference=storage.getReference();
         loading=new ProgressDialog(getActivity());
+
+        Toast.makeText(getActivity(), mAuth.getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -199,7 +203,7 @@ public class ProfileFragment extends Fragment {
                                String imageUrl = uri.toString();
                                Map<String,Object> note = new HashMap<>();
                                note.put("profilepic",imageUrl);
-                               db.collection("Users").document(name).update(note).addOnSuccessListener(new OnSuccessListener<Void>() {
+                               db.collection("Users").document(mail.getText().toString()).update(note).addOnSuccessListener(new OnSuccessListener<Void>() {
                                    @Override
                                    public void onSuccess(Void aVoid) {
                                        pd.dismiss();
@@ -255,7 +259,12 @@ public class ProfileFragment extends Fragment {
                         enroll.setText(value.getString("enroll"));
                         roll.setText(value.getString("roll"));
                         fullname.setText(value.getString("name"));
-                        Picasso.get().load(value.getString("profilepic")).into(profile);
+                        try {
+                            Picasso.get().load(value.getString("profilepic")).placeholder(R.drawable.ic_default_profile1_blue).into(profile);
+                        }
+                        catch (Exception e) {
+
+                        }
 
                     }
                 });

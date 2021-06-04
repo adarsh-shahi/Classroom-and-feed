@@ -25,9 +25,6 @@ import java.util.Map;
 
 public class NoteAdapter extends FirestoreRecyclerAdapter<Note,NoteAdapter.NoteHolder> {
 
-
-
-
     public NoteAdapter(@NonNull FirestoreRecyclerOptions<Note> options) {
         super(options);
     }
