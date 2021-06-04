@@ -15,7 +15,7 @@ import android.widget.TextView;
 public class ChatFragment extends Fragment {
 
     private ImageView imageView;
-    private CardView subject1;
+    private CardView subject1, subject2, subject3, subject4, subject5;
     private TextView subject,teacherName;
 
     
@@ -30,6 +30,11 @@ public class ChatFragment extends Fragment {
         View view= inflater.inflate(R.layout.fragment_chat, container, false);
 
         subject1=view.findViewById(R.id.subject1);
+        subject2=view.findViewById(R.id.subject2);
+        subject3=view.findViewById(R.id.subject3);
+        subject4=view.findViewById(R.id.subject4);
+        subject5=view.findViewById(R.id.subject5);
+
         subject=view.findViewById(R.id.subjectName);
         teacherName=view.findViewById(R.id.teachersName);
 
@@ -38,6 +43,60 @@ public class ChatFragment extends Fragment {
             public void onClick(View v) {
                 String subjectName = subject.getText().toString();
                 String teacher = teacherName.getText().toString();
+
+                Intent intent = new Intent(getActivity(),DetailedSubjects.class);
+                intent.putExtra("sub",subjectName);
+                intent.putExtra("tea",teacher);
+                startActivity(intent);
+            }
+        });
+
+        subject2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String subjectName = "Client Side Scripting Language";
+                String teacher = "Varsha Upre";
+
+                Intent intent = new Intent(getActivity(),DetailedSubjects.class);
+                intent.putExtra("sub",subjectName);
+                intent.putExtra("tea",teacher);
+                startActivity(intent);
+            }
+        });
+
+        subject3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String subjectName = "Operating System";
+                String teacher = "Anjali Khandagale";
+
+                Intent intent = new Intent(getActivity(),DetailedSubjects.class);
+                intent.putExtra("sub",subjectName);
+                intent.putExtra("tea",teacher);
+                startActivity(intent);
+            }
+        });
+
+        subject4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String subjectName ="Entrepreneurship Development";
+                String teacher = "Vishal Shetkar";
+
+                Intent intent = new Intent(getActivity(),DetailedSubjects.class);
+                intent.putExtra("sub",subjectName);
+                intent.putExtra("tea",teacher);
+                startActivity(intent);
+            }
+        });
+
+
+
+        subject5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String subjectName = "Environmental Studies";
+                String teacher = "Deepa Yerolkar";
 
                 Intent intent = new Intent(getActivity(),DetailedSubjects.class);
                 intent.putExtra("sub",subjectName);
