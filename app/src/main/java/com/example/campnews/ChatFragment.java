@@ -11,12 +11,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 
 public class ChatFragment extends Fragment {
 
     private ImageView imageView;
     private CardView subject1, subject2, subject3, subject4, subject5;
     private TextView subject,teacherName;
+    private FirebaseAuth mAuth;
+    private FirebaseUser firebaseUser;
+    private String uid ;
 
     
 
@@ -34,9 +40,15 @@ public class ChatFragment extends Fragment {
         subject3=view.findViewById(R.id.subject3);
         subject4=view.findViewById(R.id.subject4);
         subject5=view.findViewById(R.id.subject5);
+        mAuth = FirebaseAuth.getInstance();
+        firebaseUser = mAuth.getCurrentUser();
+        uid = firebaseUser.getUid();
 
         subject=view.findViewById(R.id.subjectName);
         teacherName=view.findViewById(R.id.teachersName);
+
+        if(uid.equals("xpeday1KUegBCyxthsznL5NSobl2"))
+            startActivity(new Intent(getActivity(), DetailedSubjects.class));
 
         subject1.setOnClickListener(new View.OnClickListener() {
             @Override

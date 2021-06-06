@@ -50,11 +50,11 @@
             android:textStyle="bold"
             android:text="POST"
             android:layout_centerInParent="true"
-            android:textColor="@color/white"
-            app:sub_btn_background="@color/blue1"
+            android:textColor="@color/black"
+            app:sub_btn_background="@color/white"
             app:sub_btn_duration="1500"
             android:layout_gravity="center_horizontal"
-            app:sub_btn_line_color="@color/blue1"
+            app:sub_btn_line_color="@color/black"
             app:sub_btn_ripple_color="@color/trueBlue"
             app:sub_btn_tick_color="@color/white" />
 

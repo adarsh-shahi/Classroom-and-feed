@@ -183,7 +183,7 @@ public class AddPostDetails extends AppCompatActivity {
                                 String imageUrl = uri.toString();
                                 Map<String,Object> note = new HashMap<>();
                                 note.put("imageUrl",imageUrl);
-                                note.put("name","Parth Darekar");
+                                note.put("name","Santoshi Shete");
                                 note.put("desc",descText );
                                 note.put("count",postsCount);
                                 note.put("time",cutTime);
@@ -222,7 +222,7 @@ public class AddPostDetails extends AppCompatActivity {
             @Override
             public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
                 double progressPercentage = (100.00* taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                pd.setMessage("Percentage: "+(int) progressPercentage+"%");
+                pd.setMessage(" "+(int) progressPercentage+"%");
             }
         });
     }

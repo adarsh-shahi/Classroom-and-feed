@@ -108,8 +108,8 @@ public class DetailedSubjects extends AppCompatActivity {
         editNotice=findViewById(R.id.noticeEdit);
 
 
-        subjectName.setText(sub);
-        teachersName.setText(teacher);
+        subjectName.setText("Advanced Java Programming");
+        teachersName.setText("Santoshi Shete");
 
 
 
