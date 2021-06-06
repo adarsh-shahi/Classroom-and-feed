@@ -6,13 +6,14 @@ import androidx.fragment.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
-    private FirebaseUser currentUserId;
 
 
     @Override
@@ -21,19 +22,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mAuth=FirebaseAuth.getInstance();
-        currentUserId=mAuth.getCurrentUser();
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new HomeFragment()).commit();
 
     }
 
     private  BottomNavigationView.OnNavigationItemSelectedListener navListener= new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment selectedFragment=null;
+            Fragment selectedFragment = null;
             switch (item.getItemId()){
 
                 case R.id.nav_home:
@@ -48,20 +48,20 @@ public class MainActivity extends AppCompatActivity {
 
             return true;
         }
+
     };
 
 
     @Override
     protected void onStart() {
         super.onStart();
-        if(currentUserId==null){
-        startActivity( new Intent(MainActivity.this,LoginActivity.class));
-        finish();
+        FirebaseUser currentUserID = mAuth.getCurrentUser();;
+        if(currentUserID == null){
+            startActivity( new Intent(MainActivity.this,LoginActivity.class));
+            finish();
         }
-
+        else {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new HomeFragment()).commit();
+        }
     }
-
-
-
-
 }

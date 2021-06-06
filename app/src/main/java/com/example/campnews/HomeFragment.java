@@ -21,6 +21,8 @@ import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -41,6 +43,9 @@ public class HomeFragment extends Fragment {
     private FloatingActionButton addPost;
     private int STORAGE_PERMISSION_CODE = 1;
     Date currentTime;
+    private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
+    private String currentUserId;
 
 
    @Nullable
@@ -54,6 +59,12 @@ public class HomeFragment extends Fragment {
                .setQuery(query,Note.class)
                .build();
 
+       mAuth=FirebaseAuth.getInstance();
+       currentUser=mAuth.getCurrentUser();
+       currentUserId = currentUser.getUid();
+
+
+
        adapter = new NoteAdapter(options);
        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
        recyclerView.setHasFixedSize(true);
@@ -62,6 +73,10 @@ public class HomeFragment extends Fragment {
 
        addPost=view.findViewById(R.id.addPost);
        currentTime = Calendar.getInstance().getTime();
+
+       if(currentUserId.equals("xpeday1KUegBCyxthsznL5NSobl2")){
+           addPost.setVisibility(View.VISIBLE);
+       }
 
        addPost.setOnClickListener(new View.OnClickListener() {
            @Override

@@ -23,6 +23,8 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -57,6 +59,9 @@ public class DetailedSubjects extends AppCompatActivity {
     private CollectionReference nameRef = db.collection("Notes");
     private long postsCount;
     private Uri imageUri;
+    private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
+    private String currentUserId;
     Date currentTime;
     String pin;
 
@@ -71,6 +76,10 @@ public class DetailedSubjects extends AppCompatActivity {
         firebaseStorage=FirebaseStorage.getInstance();
         storageReference=firebaseStorage.getReference();
         currentTime= Calendar.getInstance().getTime();
+
+        mAuth=FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+        currentUserId = currentUser.getUid();
 
         Intent intent = getIntent();
         String sub = intent.getStringExtra("sub");
@@ -123,47 +132,16 @@ public class DetailedSubjects extends AppCompatActivity {
           }
       });
 
+        if(currentUserId.equals("xpeday1KUegBCyxthsznL5NSobl2")){
+            uploadFiles.setVisibility(View.VISIBLE);
+        }
 
-      uploadFiles.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-
-              choosePost();
-
-
-//              if(isOpen){
-//                  upLoadImage.startAnimation(rotateClose);
-//                  uploadPdf.startAnimation(rotateClose);
-//                  isOpen=false;
-//              }
-//              else {
-//                  upLoadImage.startAnimation(rotateOpen);
-//                  uploadPdf.startAnimation(rotateOpen);
-//
-//                  isOpen=true;
-//
-//              }
-          }
-      });
-
-      upLoadImage.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-              startActivity(new Intent(DetailedSubjects.this,SelectFile.class));
-          }
-      });
-
-      uploadPdf.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-
-          }
-      });
-
-
-
-
-
+        uploadFiles.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                choosePost();
+            }
+        });
 
     }
 

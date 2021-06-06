@@ -98,11 +98,12 @@ public class LoginActivity extends AppCompatActivity {
                 login("sushilhivale@gmail.com", password);
             } else if (id.equals("IF-18026")) {
                 login("nikhiloswal12@gmail.com", password);
-            } else {
+            } else if(id.equals("ajpteacher")){
+                login("ajpteacher.campnews@gmail.com", password);
+            }
+            else {
                 Toast.makeText(LoginActivity.this, " Please enter Correct College ID", Toast.LENGTH_SHORT).show();
             }
-
-
         }
     }
 }
