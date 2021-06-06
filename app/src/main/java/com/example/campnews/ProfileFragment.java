@@ -12,6 +12,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -72,6 +73,8 @@ public class ProfileFragment extends Fragment {
     private FirebaseStorage storage;
     private StorageReference storageReference;
     private int STORAGE_PERMISSION_CODE = 1;
+    private TextView personalEt;
+    private CardView CollegeCardView;
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -85,16 +88,20 @@ public class ProfileFragment extends Fragment {
         profile=view.findViewById(R.id.profile_image);
         fullname=view.findViewById(R.id.fullName);
         dob=view.findViewById(R.id.dob);
+        personalEt = view.findViewById(R.id.personalDetailsEt);
         mail=view.findViewById(R.id.mail);
         id=view.findViewById(R.id.collegeId);
         enroll=view.findViewById(R.id.enroll);
         roll=view.findViewById(R.id.rollNo);
+        CollegeCardView = view.findViewById(R.id.collegeDetailsCard);
         fab=view.findViewById(R.id.fab);
+
         storage=FirebaseStorage.getInstance();
         storageReference=storage.getReference();
         loading=new ProgressDialog(getActivity());
 
-        Toast.makeText(getActivity(), mAuth.getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
+
+
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,7 +116,7 @@ public class ProfileFragment extends Fragment {
     }
 
     private void showEditProfileDialog() {
-        String options[]={"Edit Profile Photo","About"};
+        String options[]={"Edit Profile Photo","Log Out"};
         AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
         builder.setTitle("Choose Action");
         builder.setItems(options, new DialogInterface.OnClickListener() {
@@ -120,11 +127,69 @@ public class ProfileFragment extends Fragment {
                         chooseProfilePic();
                 }
                 else if(which==1){
-                    startActivity(new Intent(getActivity(),AboutPage.class));
+                        LogOut();
                 }
             }
         });
         builder.create().show();
+    }
+
+    private void LogOut() {
+        AlertDialog.Builder builder
+                = new AlertDialog
+                .Builder(getActivity());
+
+        // Set the message show for the Alert time
+        builder.setMessage("Do you want to log out ?");
+
+        // Set Alert Title
+        builder.setTitle("Log Out");
+
+        // Set Cancelable false
+        // for when the user clicks on the outside
+        // the Dialog Box then it will remain show
+        builder.setCancelable(false);
+
+        // Set the positive button with yes name
+        // OnClickListener method is use of
+        // DialogInterface interface.
+
+        builder
+                .setPositiveButton(
+                        "Yes",
+                        new DialogInterface
+                                .OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog,
+                                                int which)
+                            {
+
+                                mAuth.signOut();
+                                startActivity(new Intent(getActivity(), LoginActivity.class));
+                                getActivity().finish();
+                            }
+                        });
+        builder
+                .setNegativeButton(
+                        "No",
+                        new DialogInterface
+                                .OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog,
+                                                int which)
+                            {
+
+                                dialog.cancel();
+                            }
+                        });
+
+        // Create the Alert dialog
+        AlertDialog alertDialog = builder.create();
+
+        // Show the Alert Dialog box
+        alertDialog.show();
     }
 
     @Override
@@ -246,28 +311,36 @@ public class ProfileFragment extends Fragment {
 
     @Override
             public void onStart() {
-                super.onStart();
-                String getMail = mAuth.getCurrentUser().getEmail();
+        super.onStart();
+        String getMail = mAuth.getCurrentUser().getEmail();
 
-                DocumentReference documentReference = db.collection("Users").document(getMail);
-                documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                        dob.setText(value.getString("dob"));
-                        mail.setText(value.getString("mail"));
-                        id.setText(value.getString("collegecode"));
-                        enroll.setText(value.getString("enroll"));
-                        roll.setText(value.getString("roll"));
-                        fullname.setText(value.getString("name"));
-                        try {
-                            Picasso.get().load(value.getString("profilepic")).placeholder(R.drawable.ic_default_profile1_blue).into(profile);
-                        }
-                        catch (Exception e) {
+        if (Uid.equals("xpeday1KUegBCyxthsznL5NSobl2")) {
+            CollegeCardView.setVisibility(View.GONE);
+            personalEt.setText("Details");
+            fullname.setText("Name: Santoshi Shete");
+            mail.setText("Mail: ajpteacher.campnews@gmail.com");
+            dob.setText("Subject: Advanced Java Programming");
 
-                        }
+        } else {
+            DocumentReference documentReference = db.collection("Users").document(getMail);
+            documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                    dob.setText(value.getString("dob"));
+                    mail.setText(value.getString("mail"));
+                    id.setText(value.getString("collegecode"));
+                    enroll.setText(value.getString("enroll"));
+                    roll.setText(value.getString("roll"));
+                    fullname.setText(value.getString("name"));
+                    try {
+                        Picasso.get().load(value.getString("profilepic")).placeholder(R.drawable.ic_default_profile1_blue).into(profile);
+                    } catch (Exception e) {
 
                     }
-                });
-            }
+
+                }
+            });
+        }
+    }
 }
 

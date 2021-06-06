@@ -16,6 +16,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -42,7 +43,7 @@ import java.util.UUID;
 
 public class AddPostDetails extends AppCompatActivity {
     private ImageView imageLoad;
-    private EditText desc,onlyText;
+    private EditText desc;
     private SubmitButton post;
     private FirebaseStorage storage;
     private StorageReference storageReference;
@@ -55,6 +56,7 @@ public class AddPostDetails extends AppCompatActivity {
     private long postsCount;
     private long postsCount1;
     Date currentTime;
+    private Button select;
 
 
 
@@ -69,24 +71,17 @@ public class AddPostDetails extends AppCompatActivity {
         storage=FirebaseStorage.getInstance();
         storageReference=storage.getReference();
         desc=findViewById(R.id.postDesc);
-        onlyText=findViewById(R.id.onlyText);
         post=findViewById(R.id.post);
+        select = findViewById(R.id.selectImage);
         currentTime = Calendar.getInstance().getTime();
 
         Intent intent = getIntent();
         String type = intent.getStringExtra("type");
 
-        if(type.equals("0")){
-            onlyText.setVisibility(View.GONE);
-        }
-        else {
-            imageLoad.setVisibility(View.GONE);
-            desc.setVisibility(View.GONE);
-        }
-
-        imageLoad.setOnClickListener(new View.OnClickListener() {
+        select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                imageLoad.setVisibility(View.VISIBLE);
                     choosePost();
             }
         });
@@ -94,61 +89,9 @@ public class AddPostDetails extends AppCompatActivity {
         post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                desc.clearFocus();
-                if(imageLoad.getDrawable()!=null){
-                    descText=desc.getText().toString();
                     uploadPic();
-                }
-                else {
-                    if (onlyText.isShown()) {
-                        onlyText.clearFocus();
-                        text = onlyText.getText().toString();
-                        onlyText.clearFocus();
-                        upLoadText(text);
-                    } else {
-                        Toast.makeText(AddPostDetails.this, "Please add something to post", Toast.LENGTH_SHORT).show();
-                    }
-                }
             }
         });
-    }
-
-    private void upLoadText(String text){
-        db.collection("Posts").addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                if(!value.isEmpty()){
-                    postsCount1 =value.getDocumentChanges().size();
-                }
-            }
-        });
-
-        if(!TextUtils.isEmpty(text)){
-
-            Map<String,Object> note1 = new HashMap<>();
-            note1.put("desc",text);
-            note1.put("name","parth darekar");
-            note1.put("count", postsCount1);
-
-            db.collection("Posts").document("parth darekar text"+(postsCount1+1)).set(note1).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-
-                    Toast.makeText(AddPostDetails.this, "Post Uploaded", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(AddPostDetails.this,MainActivity.class));
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-
-                }
-            });
-        }
-        else {
-            Toast.makeText(this, "Please write a post", Toast.LENGTH_SHORT).show();
-        }
-
-
     }
 
     @Override
@@ -210,6 +153,7 @@ public class AddPostDetails extends AppCompatActivity {
 
         String time = currentTime.toString();
         String cutTime = time.substring(0,20);
+        descText = desc.getText().toString().trim();
 
         db.collection("Posts").addSnapshotListener(new EventListener<QuerySnapshot>() {
                                                        @Override
@@ -219,9 +163,6 @@ public class AddPostDetails extends AppCompatActivity {
                                                            }
                                                        }
                                                    });
-
-
-                Toast.makeText(AddPostDetails.this, descText, Toast.LENGTH_SHORT).show();
 
          ProgressDialog pd = new ProgressDialog(AddPostDetails.this);
         pd.setTitle("Uploading Image....");
@@ -242,7 +183,7 @@ public class AddPostDetails extends AppCompatActivity {
                                 String imageUrl = uri.toString();
                                 Map<String,Object> note = new HashMap<>();
                                 note.put("imageUrl",imageUrl);
-                                note.put("name","parth darekar"+postsCount);
+                                note.put("name","Parth Darekar");
                                 note.put("desc",descText );
                                 note.put("count",postsCount);
                                 note.put("time",cutTime);

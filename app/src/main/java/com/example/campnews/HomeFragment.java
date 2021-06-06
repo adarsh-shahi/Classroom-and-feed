@@ -81,7 +81,8 @@ public class HomeFragment extends Fragment {
        addPost.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               showAddPOstType();
+               Intent intent = new Intent(getActivity(),AddPostDetails.class);
+               startActivity(intent);
            }
        });
 
@@ -117,31 +118,6 @@ public class HomeFragment extends Fragment {
 //
 //    }
 
-
-    private void showAddPOstType() {
-        String options[]={"Image Post","Text Post"};
-        AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
-        builder.setTitle("Choose Post Type");
-        builder.setItems(options, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if(which==0){
-                    String value = String.valueOf((which));
-                    Intent intent = new Intent(getActivity(),AddPostDetails.class);
-                    intent.putExtra("type",value);
-                    startActivity(intent);
-
-                }
-                else if(which==1){
-                    String value = String.valueOf((which));
-                    Intent intent = new Intent(getActivity(),AddPostDetails.class);
-                    intent.putExtra("type",value);
-                    startActivity(intent);
-                }
-            }
-        });
-        builder.create().show();
-    }
 
 
 

@@ -64,6 +64,7 @@
             android:drawableLeft="@drawable/ic_personal_blue"
             android:drawablePadding="5dp"
             android:layout_marginTop="5dp"
+            android:id="@+id/personalDetailsEt"
             android:layout_gravity="center_horizontal"
             android:text="Personal Details"
             android:textColor="@color/black"
@@ -116,6 +117,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/collegeDetailsCard"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="10dp"
                 android:layout_marginTop="20sp"

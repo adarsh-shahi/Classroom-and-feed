@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/whitesmoke"
+    android:background="@drawable/background_profile"
     android:layout_height="match_parent"
     tools:context=".AddPostDetails">
 
@@ -16,30 +16,28 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            android:visibility="gone"
             android:id="@+id/postHold"/>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="SELECT IMAGE"
+            android:id="@+id/selectImage"
+            android:textColor="@color/white" />
+
         <EditText
             android:layout_width="match_parent"
             android:layout_margin="10dp"
             android:layout_height="wrap_content"
             android:textSize="16sp"
+            android:background="@drawable/edit_text_border"
             android:textColor="@color/black"
-            android:padding="5dp"
+            android:padding="10dp"
             android:hint="Description"
-            android:textColorHint="@color/grey"
+            android:textColorHint="@color/white"
             android:id="@+id/postDesc" />
-
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:padding="5dp"
-            android:id="@+id/onlyText"
-            android:layout_margin="10dp"
-            android:hint="Message"
-            android:textColorHint="@color/grey"
-            android:textColor="@color/black"/>
 
 
         <com.spark.submitbutton.SubmitButton
